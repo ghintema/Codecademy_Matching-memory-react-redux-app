@@ -21,6 +21,9 @@ export const Card = ({ id, contents }) => {
   const flipHandler = (id) => {
     // Add action dispatch below
     dispatch(flipCard(id));
+    if (visibleIDs.length === 1) {
+      dispatch(increaseScore('tries'))
+    }
   };
 
   let cardStyle = 'resting'
@@ -47,7 +50,7 @@ export const Card = ({ id, contents }) => {
   // implement number of flipped cards check
   if (visibleIDs.length === 2) {
     click = () => { dispatch(resetCards());
-                    dispatch(increaseScore('tries'))};
+                    };
     // dispatch(increaseScore('tries'))
   }
 
